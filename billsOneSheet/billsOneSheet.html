@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bills Dashboard</title>
+  <style>
+   html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: sans-serif;
+    }
+    .grid {
+  display: grid;
+  grid-template-columns: .9fr 1.1fr;
+  grid-template-rows: 1fr 1fr;
+  height: 100vh;
+  width: 100vw;
+  gap: 1px;
+  border: 2px solid #333;
+}
+    .box {
+  box-sizing: border-box;
+  padding: 10px;
+  border: 1px solid #000000;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+#box2 {
+background-color:rgb(226, 225, 237);
+}
+
+#box4 {
+    background-color:rgb(255, 247, 213);
+}
+
+    .header {
+      font-weight: bold;
+      text-align: center;
+      padding: 5px;
+      border-bottom: 1px solid #ccc;
+      font-size: 1vw;
+    }
+    .iframe-container, .logo-grid, .logo-groups {
+      flex: 1;
+      width: 100%;
+      overflow: auto;
+    }
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    .logo-groups fieldset {
+      border: 1px solid #aaa;
+      margin: 5px 0;
+      padding: 5px;
+    }
+    .logo-groups legend {
+      font-weight: bold;
+      font-size: 0.9vw;
+    }
+    .logo-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 5px;
+    }
+    .logo-grid figure {
+      margin: 2px;
+      text-align: center;
+      flex: 0 1 calc(25% - 10px);
+    }
+    .logo-grid img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  max-height: 60px;
+  object-fit: contain;
+}
+    .logo-grid figcaption {
+      font-size: 0.9vw;
+      color: black;
+    }
+    .subtotal, .grand-total {
+      font-size: 0.9vw;
+      text-align: center;
+      margin-top: 5px;
+    }
+    .subtotal, .grand-total {
+      font-size: 1.2vw;
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    a {
+        color:red;
+        font-size: 1vw;
+        text-decoration: none;
+    }
+    @media (max-width: 768px) {
+      .grid {
+        flex-direction: column;
+      }
+      .box {
+        flex: 1 1 auto;
+        min-height: auto;
+      }
+      .header {
+        font-size: 4vw;
+      }
+      .header .total-inline {
+        font-size: 3vw;
+      }
+      .logo-grid figcaption {
+        font-size: 2.5vw;
+      }
+    }
+  </style>
+</head>
+<body>
+    <p class="grand-total">WOLFBASH BILLS Grand Total: $<span id="grand-total-value">0.00</span></p>
+  <div class="grid">
+    <div class="box" id="box1">
+      <div class="header">Monthly Bills Coming Up</div>
+      <div class="iframe-container">
+        <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRxXiRJ7l1hxRtjeN10_d5C6XFyBACAmYHsqtLxHis10hOrbHMUwBZzpdeGbqbCr5dqw_1R9A9pq6dG/pubhtml?gid=0&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
+      </div>
+    </div>
+
+    <div class="box" id="box2">
+        <div class="header">Monthly Recurring</div>
+        <div class="logo-groups">
+            <fieldset>
+                <legend>Insurance / Lien / Rentals</legend>
+                <div class="logo-grid">
+                    <a href="https://www.primerica.com/public/MyPrimerica-client-portal-US-EN.html" target="_blank">
+                        <figure data-cost="122.35">
+                            <img src="primericaG.png" alt="primericaG">autopay (CS)
+                            <figcaption>$122.35</figcaption>
+                          </figure></a>
+                          <a href="https://www.primerica.com/public/MyPrimerica-client-portal-US-EN.html" target="_blank">
+                            <figure data-cost="99">
+                                <img src="primericaK.png" alt="primericaK">autopay? (BofA)
+                                <figcaption>$99</figcaption>
+                              </figure></a>
+                    <a href="https://auth.proofing.statefarm.com/login-ui/login" target="_blank">
+                    <figure data-cost="663.14">
+                        <img src="carInsG.png" alt="carInsG">autopay (CS)
+                        <figcaption>$663.14</figcaption>
+                      </figure></a>
+                      <a href="https://www.kiafinance.com/home" target="_blank">
+                  <figure data-cost="400">
+                    <img src="kia.png" alt="kia">manual (CS)
+                    <figcaption>$400</figcaption>
+                  </figure></a>
+                  <a href="https://www.viowolf.com/" target="_blank">
+                  <figure data-cost="900">
+                    <img src="studio.png" alt="Studio">manual (K Venmo?)
+                    <figcaption>$900</figcaption>
+                  </figure></a>
+                  
+                  </div>
+                  </fieldset>
+                  <fieldset>
+                    <legend>Home / Utilities</legend>
+                    <div class="logo-grid">
+                        <a href="https://www.zillow.com/homedetails/1015-Omer-Ln-Burbank-CA-91502/20825171_zpid/" target="_blank">
+                        <figure data-cost="2000">
+                            <img src="rent.png" alt="Rent">manual (checks)
+                            <figcaption>$2000</figcaption>
+                          </figure></a>
+                          <a href="https://my.burbankwaterandpower.com/portal/" target="_blank">
+                    <figure data-cost="60">
+                        <img src="bwp.png" alt="BWP">autopay (CS)
+                        <figcaption>$60</figcaption>
+                      </figure></a>
+                      <a href="https://www.spectrum.net/" target="_blank">
+                      <figure data-cost="94.25">
+                        <img src="spectrum.png" alt="Spectrum">autopay (CS)
+                        <figcaption>$94.25</figcaption>
+                      </figure></a>
+                      <a href="https://account.t-mobile.com/signin/v2/" target="_blank">
+                      <figure data-cost="200">
+                        <img src="phone.png" alt="TMobile">autopay? (BofA)
+                        <figcaption>$200</figcaption>
+                      </figure></a>
+                      <a href="https://myaccount.socalgas.com/ui/login" target="_blank">
+                      <figure data-cost="50">
+                        <img src="socalGas.png" alt="SoCalGas">autopay (CS)
+                        <figcaption>$50</figcaption>
+                      </figure></a>
+                      <a href="https://id.venmo.com/signin#/lgn" target="_blank">
+                      <figure data-cost="300">
+                        <img src="jolie.png" alt="Jolie">manual (Venmo)
+                        <figcaption>$300</figcaption>
+                      </figure></a>
+                </div>
+              </fieldset>
+          <fieldset>
+            <legend>Streaming / Subscriptions</legend>
+            <div class="logo-grid">
+                <a href="https://www.netflix.com/" target="_blank">
+                <figure data-cost="16">
+                  <img src="netflix.png" alt="Netflix">autopay? (BofA)
+                  <figcaption>$16</figcaption>
+                </figure></a>
+                <a href="https://www.hulu.com/welcome" target="_blank">
+                <figure data-cost="18.99">
+                  <img src="hulu.png" alt="Hulu">autopay (USBankCC)
+                  <figcaption>$18.99</figcaption>
+                </figure></a>
+                <a href="https://www.disneyplus.com/" target="_blank">
+                <figure data-cost="12">
+                    <img src="disney.png" alt="Disney+">autopay (USBankCC)
+                    <figcaption>$12</figcaption>
+                  </figure></a>
+                  <a href="https://www.peacocktv.com/" target="_blank">
+                  <figure data-cost="7.99">
+                    <img src="peacock.png" alt="Peacock">autopay (USBankCC)
+                    <figcaption>$7.99</figcaption>
+                  </figure></a>
+                  <a href="https://chatgpt.com/" target="_blank">
+                  <figure data-cost="20">
+                    <img src="chat.png" alt="Chat">autopay (CS)
+                    <figcaption>$20</figcaption>
+                  </figure></a>
+                  <a href="https://open.spotify.com/" target="_blank">
+                  <figure data-cost="15">
+                    <img src="spotify.png" alt="Spotify">autopay? (BofA)
+                    <figcaption>$15</figcaption>
+                  </figure></a>
+              </div>
+            </fieldset>
+        </div>
+      </div>
+
+    <div class="box" id="box3">
+      <div class="header">Annual Bills Coming Up</div>
+      <div class="logo-groups">
+        <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRxXiRJ7l1hxRtjeN10_d5C6XFyBACAmYHsqtLxHis10hOrbHMUwBZzpdeGbqbCr5dqw_1R9A9pq6dG/pubhtml?gid=424695122&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
+      </div>
+    </div>
+
+    <div class="box" id="box4">
+      <div class="header">Annual Bills</div>
+      <div class="logo-groups">
+        <fieldset>
+            <legend>Auto / Rentals</legend>
+            <div class="logo-grid">
+                <a href="https://app.ace.aaa.com/enterprise/identity/#/login" target="_blank">
+                    <figure data-cost="186">
+                      <img src="aaa.png" alt="AAA">autopay? (USBank?)
+                      <figcaption>$186</figcaption>
+                    </figure></a>
+                <a href="https://auth.proofing.statefarm.com/login-ui/login" target="_blank">
+        <figure data-cost="2000">
+            <img src="carInsK.png" alt="carInsK">manual? (BofA)
+            <figcaption>$2000</figcaption>
+          </figure></a>
+          <a href="https://www.dmv.ca.gov/portal/" target="_blank">
+          <figure data-cost="300">
+            <img src="hondaDMV.png" alt="hondaDMV">manual? (BofA)
+            <figcaption>$300</figcaption>
+          </figure></a>
+          <a href="https://www.dmv.ca.gov/portal/" target="_blank">
+          <figure data-cost="664">
+            <img src="kiaDMV.png" alt="kiaDMV">manual (CS)
+            <figcaption>$664</figcaption>
+          </figure></a>
+          <a href="https://www.dmv.ca.gov/portal/" target="_blank">
+          <figure data-cost="222">
+            <img src="harleyDMV.png" alt="harleyDMV">manual (CS)
+            <figcaption>$222</figcaption>
+          </figure></a>
+          <a href="https://reg.usps.com/login?appURL=https://poboxes.usps.com/manageAccount.html" target="_blank">
+          <figure data-cost="236">
+            <img src="pobox.png" alt="PO Box">manual (CS)
+            <figcaption>$236</figcaption>
+          </figure></a>
+      </div>
+    </fieldset>
+    <fieldset>
+        <legend>Pro Software/ Biz Web</legend>
+        <div class="logo-grid">
+            <a href="https://my.avid.com/shop/login" target="_blank">
+    <figure data-cost="299">
+        <img src="ptStudio.png" alt="PT Studio">autopay (USBankCC)
+        <figcaption>$299</figcaption>
+      </figure>
+      <a href="https://my.avid.com/shop/login" target="_blank">
+      <figure data-cost="99">
+        <img src="ptArtist.png" alt="PT Artist">autopay (USBankCC)
+        <figcaption>$99</figcaption>
+      </figure></a>
+      <a href="https://my.milesweb.com/index.php?rp=/login" target="_blank">
+      <figure data-cost="30">
+        <img src="milesWeb.png" alt="MilesWeb">autopay? (USBankCC?)
+        <figcaption>$30</figcaption>
+      </figure></a>
+      <a href="https://www.namecheap.com/myaccount/login-signup/" target="_blank">
+      <figure data-cost="30">
+        <img src="namecheap.png" alt="Namecheap">autopay? (USBankCC?)
+        <figcaption>$30</figcaption>
+      </figure></a>
+      <a href="https://www.twilio.com/login" target="_blank">
+      <figure data-cost="30">
+        <img src="twilio.png" alt="Twilio">autopay? (USBankCC?)
+        <figcaption>$30</figcaption>
+      </figure></a>
+      <a href="https://www.dropbox.com/login" target="_blank">
+      <figure data-cost="300">
+        <img src="dropbox.png" alt="DropBox">autopay? (BofA)
+        <figcaption>$300</figcaption>
+      </figure></a>
+  </div>
+  </fieldset>
+  <fieldset>
+    <legend>Memberships / Subscriptions</legend>
+    <div class="logo-grid">
+        <a href="https://www.costco.com/" target="_blank">
+        <figure data-cost="65">
+          <img src="costco.png" alt="Costco">autopay (BofA)
+          <figcaption>$65</figcaption>
+        </figure></a>
+        <a href="https://lazoo.org/join-our-community/members/" target="_blank">
+        <figure data-cost="190">
+          <img src="zoo.png" alt="Zoo">manual? (BofA)
+          <figcaption>$190</figcaption>
+        </figure></a>
+        <a href="https://secure.kidspacemuseum.org/" target="_blank">
+        <figure data-cost="185">
+            <img src="kidspace.png" alt="Kidspace">manual? (BofA)
+            <figcaption>$185</figcaption>
+          </figure></a>
+          <a href="https://tickets.nhmlac.org/auth/527/members" target="_blank">
+          <figure data-cost="129">
+            <img src="nhm.png" alt="NHM">manual? (BofA)
+            <figcaption>$129</figcaption>
+          </figure></a>
+          <a href="https://68138.blackbaudhosting.com/68138/Membership" target="_blank">
+            <figure data-cost="129">
+              <img src="descanso.png" alt="Descanso">manual? (BofA)
+              <figcaption>$80</figcaption>
+            </figure></a>
+          <a href="https://www.duolingo.com/?isLoggingIn=true" target="_blank">
+          <figure data-cost="84">
+            <img src="duolingo.png" alt="Duolingo">autopay (USBankCC)
+            <figcaption>$84</figcaption>
+          </figure></a>
+          <a href="https://mimo.org/web/login" target="_blank">
+          <figure data-cost="100">
+            <img src="mimo.png" alt="Mimo">autopay (USBankCC)
+            <figcaption>$100</figcaption>
+          </figure></a>
+      </div>
+    </fieldset>
+
+    </div>
+  </div>
+
+  <script>
+   function calculateTotals() {
+      let grandTotal = 0;
+      let monthlyTotal = 0;
+      document.querySelectorAll('.logo-groups fieldset').forEach(group => {
+        let subtotal = 0;
+        group.querySelectorAll('figure').forEach(fig => {
+          const cost = parseFloat(fig.dataset.cost || 0);
+          subtotal += cost;
+          monthlyTotal += cost;
+          grandTotal += cost;
+        });
+        let subtotalSpan = group.querySelector('.subtotal-value');
+        if (!subtotalSpan) {
+          const p = document.createElement('p');
+          p.className = 'subtotal';
+          p.innerHTML = `Subtotal: $<span class="subtotal-value">${subtotal.toFixed(2)}</span>`;
+          group.appendChild(p);
+        } else {
+          subtotalSpan.textContent = subtotal.toFixed(2);
+        }
+      });
+      document.getElementById('grand-total-value').textContent = grandTotal.toFixed(2);
+      document.getElementById('monthly-total').textContent = monthlyTotal.toFixed(2);
+    }
+    window.addEventListener('DOMContentLoaded', calculateTotals);
+
+  </script>
+
+</body>
+</html>
