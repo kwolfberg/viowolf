@@ -123,8 +123,8 @@ background-color:rgb(226, 225, 237);
 <body>
   
   <div id="overlay" style="position:fixed; top:0; left:0; width:100%; height:100%; background:white; z-index:9999; display:flex; flex-direction:column; justify-content:center; align-items:center;">
-        <input type="password" id="pw" placeholder="Enter password">
-        <button onclick="checkPassword()">Enter</button>
+        <input type="password" id="pw" placeholder="Enter password" style="width:80%; max-width:300px; padding:10px; font-size:16px;">
+        <button onclick="checkPassword()" style="margin-top:10px; padding:10px 20px; font-size:16px;">Enter</button>
         <p id="error" style="color:red;"></p>
       </div>
   
@@ -239,7 +239,8 @@ background-color:rgb(226, 225, 237);
                     <img src="spotify.png" alt="Spotify">autopay? (BofA)
                     <figcaption>$15</figcaption>
                   </figure></a>
-              <figure data-cost="9.99">
+              <a href="https://www.icloud.com/" target="_blank">
+                  <figure data-cost="9.99">
                     <img src="icloud.png" alt="iCloud">autopay? (BofA)
                     <figcaption>$9.99</figcaption>
                   </figure></a>
